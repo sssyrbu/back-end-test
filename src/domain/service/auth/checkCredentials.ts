@@ -21,19 +21,26 @@ export const buildCheckCredentials = ({userRepository}: Adapter): CheckCredentia
       },
       select: {
         id: true,
+        password: true,
         email: true,
         avatar: true,
         created_at: true
       }
     }) 
-
+    console.log('user from buildCheckCredentials: ', user);
     if (!user || !user.password) {
+      console.log('not user')
+      console.log(user)
+      console.log(!user)
+      console.log(user?.password)
+      console.log(!user?.password)
       return null
     }
 
     const passwordsSame = await bcrypt.compare(password, user?.password)
 
     if (!passwordsSame) {
+      console.log('password same')
       return null
     }
  

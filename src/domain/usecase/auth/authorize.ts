@@ -21,7 +21,7 @@ export const buildAuthorize = ({
       email,
       password
     })
-
+    console.log(user)
     if (!user) {
       throw new UnauthorizedError()
     }
